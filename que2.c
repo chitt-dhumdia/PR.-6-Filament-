@@ -1,35 +1,36 @@
-#include<stdio.h>
+#include <stdio.h>
 
 int main()
 {
-    char str[20];
-    int length=0,pelidrome=0;
+    char str[100];
 
-    printf("\n please enter any string : ");
-    scanf("%s",str);
+    printf("Enter any string: ");
+    gets(str);  
 
-    for(int i=0;str[i]!='\0';i++)
+    for (int i = 0; str[i] != '\0'; i++) 
     {
-        length++;
-    }
+        int count = 0;
+        int repeat = 0;
+        char repeatch = str[i];
 
-    for(int i=0;i<length/2;i++)
-    {
-        if(str[i]==str[length-i-1])
-        {
-            pelidrome=1;
+        for (int j = 0; str[j] != '\0'; j++)
+         {
+            if (str[i] == str[j])
+            {
+                count++;
+            }
+            if (repeatch == str[j] && j<i)
+            {
+                repeat = 1;
+                break;
+            }
+        }
+
+        if (repeat == 0) 
+        {  
+            printf("%c => %d\n", str[i], count);
         }
     }
 
-    if(pelidrome==1)
-    {
-        printf("your string is pelidrome");
-    }
-    else
-    {
-        printf("your string is not pelidrome");   
-    }
-
     return 0;
-
 }
